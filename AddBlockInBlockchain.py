@@ -24,33 +24,31 @@ def read_bc_from_file(path):
 def add_new_block(blockchain, path):
 
     while 1:
-        flag = input("Хотите добавить блок? (y/n)").lower()
+        flag = input("Do you want to add a block?? (y/n)").lower()
         if flag == 'y':
             transaction = []
             inp = 'y'
             while inp == 'y':
-                sender, receiver = input("Введите отправителя, получателя транзакции через пробел: ").split()
-                amount = int(input("Введите сумму транзакции: "))
+                sender, receiver = input("Enter the sender and recipient of the transaction separated by a space: ").split()
+                amount = int(input("Enter transaction amount: "))
                 transaction.append(Transaction(sender, receiver, amount))
-                inp = input('Хотите добавить еще одну транзакцию? (y/n)').lower()
-            data = input("Веедите данные, которые вы хотите добавить в блок: ")
+                inp = input('Do you want to add another transaction?? (y/n)').lower()
+            data = input("Enter the data you want to add to the block: ")
             blockchain.addBlock(Block(blockchain.lenofchain() - 1, str(date.today()), data, transaction))
-            print("Блок добавлен!")
+            print("Block added!")
             blockchain.saveToJson(path)
         elif flag == 'n':
             break
         else:
-            print("Некорректный ввод, введите n/y.")
+            print("Invalid input, please enter n/y.")
 
-        chek = input("Хотиет просмотреть содержимое обновленного файла? (y/n)").lower()
+        chek = input("Would you like to view the contents of the updated file?? (y/n)").lower()
         if chek == 'y':
             blockchain.printBlockChain()
 
 
 def main():
-    path = input("Введите название json-файла, "
-                 "где хранится блокчейн, "
-                 "в который необходимо добавить блоки: ")
+    path = input("Enter the name of the json file with the blockchain to which you want to add blocks: ")
     if os.path.isfile(path):
         try:
             read_bc_from_file(path)
@@ -58,7 +56,6 @@ def main():
             print('Error! Invalid data in file.')
     else:
         print('Error! File not found at the specified path.')
-
 
 
 if __name__ == '__main__':

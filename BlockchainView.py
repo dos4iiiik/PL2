@@ -17,7 +17,7 @@ def print_blockchain(path):
         print("---------------")
 
 def main():
-    path = input("Введите название файла, где хранится блокчейн: ")
+    path = input("Enter the name of the blockchain file: ")
     if os.path.isfile(path):
         try:
             print_blockchain(path)

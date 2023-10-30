@@ -112,7 +112,7 @@ def main():
     testChain.printBlockChain()
     # no tampering in our block chain yet so should be true here
     print("Chain valid? " + str(testChain.isChainValid()))
-    path = input("Введите название для json-файла, куда будет сохранен блокчейн: ")
+    path = input("Enter a name for the json-file where the blockchain will be saved: ")
     testChain.saveToJson(path)
 
 
